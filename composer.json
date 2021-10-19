@@ -1,0 +1,47 @@
+{
+    "name": "aw-studio/laravel-dynamic-attributes",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lennart Carstens-Behrens",
+            "email": "lennart.carbe@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "AwStudio\\DynamicAttributes\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "php": "^8.0",
+        "phpunit/phpunit": "^9.5",
+        "orchestra/testbench": "^6.21"
+    },
+    "require": {
+        "illuminate/support": "^8.46",
+        "illuminate/contracts": "^8.46",
+        "inertiajs/inertia-laravel": "^0.4"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php ./vendor/bin/testbench package:discover --ansi"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "AwStudio\\DynamicAttributes\\DynamicAttributesServiceProvider"
+            ]
+        }
+    }
+}
