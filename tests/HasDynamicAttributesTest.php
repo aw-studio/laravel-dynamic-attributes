@@ -54,4 +54,14 @@ class HasDynamicAttributesTest extends TestCase
 
         $this->assertSame(true, $model->refresh()->getAttribute('is_active'));
     }
+
+    public function test_whereAttribute_query_scope()
+    {
+        Form::create(['foo' => 'bar']);
+        Form::create(['amount' => 100]);
+
+        $this->assertSame(1, Form::whereAttribute('foo', 'bar')->count());
+        $this->assertSame(1, Form::whereAttribute('amount', '>', 10)->count());
+        $this->assertSame(0, Form::whereAttribute('amount', '>', 60)->count());
+    }
 }

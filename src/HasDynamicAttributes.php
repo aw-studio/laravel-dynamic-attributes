@@ -242,4 +242,21 @@ trait HasDynamicAttributes
 
         return $names;
     }
+
+    /**
+     * `whereAttributes` query scope.
+     *
+     * @param  Builder $query
+     * @param  string  $key
+     * @param  array   ...$parameters
+     * @return void
+     */
+    public function scopeWhereAttribute($query, $key, ...$parameters)
+    {
+        $query->whereHas('dynamicAttributes', function ($subQuery) use ($key, $parameters) {
+            $subQuery
+                ->where('key', $key)
+                ->where('value', ...$parameters);
+        });
+    }
 }
