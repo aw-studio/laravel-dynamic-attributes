@@ -14,7 +14,7 @@ class DynamicAttributesServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../migrations/2021_00_00_000000_create_attributes_table.php' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_attributes_table.php'),
-        ], 'attributes:migrations');
+            __DIR__.'/../migrations/2021_00_00_000000_create_dynamic_attributes_table.php' => database_path('migrations/'.date('Y_m_d_His', time()).'_create_dynamic_attributes_table.php'),
+        ], 'dynamic-attributes:migrations');
     }
 }

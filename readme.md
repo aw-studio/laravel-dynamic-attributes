@@ -13,7 +13,7 @@ composer require aw-studio/laravel-dynamic-attributes
 Publish the migrations:
 
 ```php
-php artisan vendor:publish --tag="attributes:migraitons"
+php artisan vendor:publish --tag="dynamic-attributes:migraitons"
 ```
 
 ## Usage
@@ -54,11 +54,17 @@ dd($page->released_at); // Is an instance of Illuminate\Support\Carbon
 However you may want to set an attribute cast manually:
 
 ```php
-$apge = Page::create(['is_active' => 1]);
+$page = Page::create(['is_active' => 1]);
 
 dump($page->is_active); // output: 1
 
 $page->setDynamicAttributeCast('is_active', 'boolean')->save();
 
 dd($page->is_active); // output: true
+```
+
+### Query Scopes
+
+```php
+Page::whereAttribute('foo', 'bar');
 ```

@@ -5,7 +5,7 @@ namespace AwStudio\DynamicAttributes;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
-class Attribute extends Model
+class DynamicAttribute extends Model
 {
     /**
      * Attributes that are mass assignable.
@@ -21,7 +21,7 @@ class Attribute extends Model
      *
      * @var string
      */
-    public $table = 'attributes';
+    public $table = 'dynamic_attributes';
 
     /**
      * Get the casts array.

@@ -30,7 +30,7 @@ trait HasDynamicAttributes
     {
         return property_exists($this, 'attributesModel')
             ? $this->attributesModel
-            : Attribute::class;
+            : DynamicAttribute::class;
     }
 
     /**
@@ -68,8 +68,8 @@ trait HasDynamicAttributes
     /**
      * Get first or dynamic attribute or create a new one.
      *
-     * @param  string          $key
-     * @return Attribute|mixed
+     * @param  string                 $key
+     * @return DynamicAttribute|mixed
      */
     public function firstOrNewDynamicAttribute($key)
     {
@@ -192,7 +192,7 @@ trait HasDynamicAttributes
     {
         return $this
             ->getRelationValue('dynamicAttributes')
-            ->mapWithKeys(function (Attribute $attribute) {
+            ->mapWithKeys(function (DynamicAttribute $attribute) {
                 return [$attribute->key => $attribute->value];
             })
             ->toArray();
