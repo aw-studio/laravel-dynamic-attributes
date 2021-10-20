@@ -2,6 +2,8 @@
 
 A package for adding dynamic attributes to [Elqouent Models](https://laravel.com/docs/eloquent).
 
+See also: [Laravel Dynamic Relations](https://github.com/aw-studio/laravel-dynamic-relations)
+
 ## Setup
 
 Install the package via composer:
