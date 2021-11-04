@@ -15,7 +15,7 @@ composer require aw-studio/laravel-dynamic-attributes
 Publish the migrations:
 
 ```php
-php artisan vendor:publish --tag="dynamic-attributes:migraitons"
+php artisan vendor:publish --tag="dynamic-attributes:migrations"
 ```
 
 ## Usage
