@@ -132,6 +132,29 @@ trait HasDynamicAttributes
     }
 
     /**
+     * Get the fillable attributes of a given array.
+     *
+     * @param  array  $attributes
+     * @return array
+     */
+    protected function fillableFromArray(array $attributes)
+    {
+        if (count($this->getFillable()) > 0 && ! static::$unguarded) {
+            $fillables = $this->getFillable();
+    
+            foreach ($attributes as $key => $value) {
+                if ($this->isDynamicAttribute($key)) {
+                    $fillables []= $key;
+                }
+            }
+
+            return array_intersect_key($attributes, array_flip($fillables));
+        }
+
+        return $attributes;
+    }
+
+    /**
      * Set dynamic model attribute casts.
      *
      * @param  array $casts
@@ -229,7 +252,7 @@ trait HasDynamicAttributes
      */
     public function getStaticAttributeNames()
     {
-        $names = [$this->getKeyName(), ...$this->getFillable()];
+        $names = [$this->getKeyName(), ...$this->getFillable(), ...$this->getGuarded()];
 
         if ($this->usesTimestamps()) {
             $names[] = $this->getUpdatedAtColumn();
